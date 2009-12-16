@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='booka'>
+	<inherits name='com.google.gwt.user.User' />
+
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+	<stylesheet src="../reset.css" />
+	<stylesheet src="../general.css" />
+	<inherits name='com.calclab.suco.Suco' />
+	<entry-point class='net.zaszas.booka.client.Booka' />
+
+	<!-- Specify the paths for translatable code                    -->
+	<source path='client' />
+
+</module>

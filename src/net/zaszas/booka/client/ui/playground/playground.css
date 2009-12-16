@@ -1,0 +1,28 @@
+
+.navigation {
+	width: 100%;
+	overflow: hidden;
+	background-color: white;
+}
+
+
+.explorer {
+	background-color: #efefef;
+}
+
+.content {
+	background-color: #C6C8CA;
+}
+
+.tools {
+	background-color: #00AEEF;
+}
+
+.status {
+	display: block;
+	width: 100%;
+	padding: 1px 10px;
+	font-size: 90%;
+	background-color: black;
+	color: #C6C8CA;
+}

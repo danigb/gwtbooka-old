@@ -1,0 +1,12 @@
+.actions {
+	
+}
+
+.action {
+	float: left;
+	padding: 0.2em 1em;
+	margin: 0.3em 0 0 0.3em;
+	color: white;
+	background-color: #00AEEF;
+	color: white;
+}

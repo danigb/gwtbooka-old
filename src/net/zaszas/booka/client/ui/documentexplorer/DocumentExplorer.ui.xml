@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style field="booka" src="../booka.css" />
+		
+	<ui:style>
+		.list {
+			background-color: white;
+		}
+	</ui:style>
+	<g:DockLayoutPanel unit="PX">
+		<g:north size="30">
+			<g:HTMLPanel stylePrimaryName="actions" styleName="{booka.actions}">
+				<g:Label ui:field="addProjectAction" 
+				styleName="{booka.action}">Añadir artículo</g:Label>
+				<g:Label ui:field="addDocumentAction" 
+				styleName="{booka.action}">Añadir documento</g:Label>
+			</g:HTMLPanel>
+		</g:north>
+		<g:center>
+			<g:FlowPanel styleName="{style.list}" ui:field="list"></g:FlowPanel>
+		</g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 
