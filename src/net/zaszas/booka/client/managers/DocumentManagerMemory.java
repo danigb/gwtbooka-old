@@ -16,11 +16,15 @@ public class DocumentManagerMemory implements DocumentManager {
     public DocumentManagerMemory() {
 	this.list = new HashMap<String, Document>();
 	Document document = new Document("1", "Sin título", "Sin descripción");
+	add(document);
+    }
+
+    private void add(Document document) {
 	list.put(document.id, document);
     }
     
     @Override
-    public void getList(AsyncCallback<List<DocumentInfo>> callback) {
+    public void list(AsyncCallback<List<DocumentInfo>> callback) {
 	ArrayList<DocumentInfo> result = new ArrayList<DocumentInfo>();
 	for (Document doc : list.values()) {
 	    result.add(new DocumentInfo(doc));
@@ -29,13 +33,21 @@ public class DocumentManagerMemory implements DocumentManager {
     }
 
     @Override
-    public void getDocument(String id, AsyncCallback<Document> callback) {
+    public void get(String id, AsyncCallback<Document> callback) {
 	Document doc = list.get(id);
 	if (doc != null) {
 	    callback.onSuccess(new Document(doc));
 	} else {
 	    callback.onFailure(new Throwable("Not found"));
 	}
+    }
+
+    @Override
+    public void create(Document doc, AsyncCallback<Document> callback) {
+	Document document = new Document(doc);
+	document.id = "" + System.currentTimeMillis();
+	add(document);
+	callback.onSuccess(document);
     }
 
 }

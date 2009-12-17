@@ -3,3 +3,12 @@
 	-moz-border-radius: 0.3em;
 	-webkit-border-radius: 0.3em;
 }
+
+.actions a {
+	color: white;
+	text-decoration: none;
+}
+
+.actions a:hover {
+	text-decoration: underline;
+}

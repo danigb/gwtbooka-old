@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style type="net.zaszas.booka.client.ui.documenteditor.Slot.Styles">
+		.slot {
+			display: block;
+			padding: 2px 0px;
+			width: 80%;
+			overflow: hidden;
+			background-color: #D4E8EF;
+			border: 1px solid white;
+			margin: 0px 10%;
+		}
+		
+		.active {
+			border: 1px solid #00AEEF;
+		}
+	</ui:style>
+	<g:FlowPanel ui:field="self">
+		<g:FocusPanel styleName="{style.slot}" ui:field="slot" />
+	</g:FlowPanel>
+</ui:UiBinder> 

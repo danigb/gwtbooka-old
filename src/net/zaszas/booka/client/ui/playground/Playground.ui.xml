@@ -17,17 +17,17 @@
 		<g:north size='80'>
 			<g:FlowPanel styleName="{style.navigation}">
 				<g:Hyperlink styleName="{icons.icon} {icons.entrance}"
-					targetHistoryToken="entrance" ui:field="entrance" />
+					targetHistoryToken="/entrance" ui:field="entrance" />
 				<g:Hyperlink styleName="{icons.icon} {icons.archives}"
-					targetHistoryToken="archives" ui:field="archives" />
+					targetHistoryToken="/docs" ui:field="archives" />
 				<g:Hyperlink styleName="{icons.icon} {icons.edition}"
-					targetHistoryToken="edition" ui:field="edition" />
+					targetHistoryToken="/edition" ui:field="edition" />
 				<g:Hyperlink styleName="{icons.icon} {icons.booka}"
-					targetHistoryToken="booka" ui:field="booka" />
+					targetHistoryToken="/booka" ui:field="booka" />
 				<g:Hyperlink styleName="{icons.icon} {icons.right} {icons.account}"
-					targetHistoryToken="account" ui:field="account" />
+					targetHistoryToken="/account" ui:field="account" />
 				<g:Hyperlink styleName="{icons.icon} {icons.right} {icons.contact}"
-					targetHistoryToken="contact" ui:field="contact" />
+					targetHistoryToken="/contact" ui:field="contact" />
 			</g:FlowPanel>
 		</g:north>
 		<g:south size="16">
@@ -41,11 +41,11 @@
 		</g:west>
 
 		<g:east size="250">
-			<g:HTMLPanel styleName="{style.tools}"></g:HTMLPanel>
+			<g:LayoutPanel ui:field="tools" styleName="{style.tools}" />
 		</g:east>
 
 		<g:center>
-			<g:HTMLPanel styleName="{style.content}"></g:HTMLPanel>
+			<g:LayoutPanel ui:field="content" styleName="{style.content}" />
 		</g:center>
 
 	</g:DockLayoutPanel>

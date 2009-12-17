@@ -9,8 +9,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface DocumentManager {
 
-    void getList(AsyncCallback<List<DocumentInfo>> callback);
+    void list(AsyncCallback<List<DocumentInfo>> callback);
 
-    void getDocument(String id, AsyncCallback<Document> callback);
+    void get(String id, AsyncCallback<Document> callback);
+
+    void create(Document doc, AsyncCallback<Document> callback);
 
 }

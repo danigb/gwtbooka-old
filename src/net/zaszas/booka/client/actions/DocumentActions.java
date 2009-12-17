@@ -27,56 +27,89 @@ public class DocumentActions {
 	editor = ui.getDocumentEditor();
 	manager = managers.getDocumentManager();
 
-	router.map("^archives$", new Action() {
+	router.map("^/docs$", new Action() {
 	    @Override
 	    public void execute(String token) {
-		showArchives();
+		showDocuments(false);
 	    }
 	});
 
-	router.map("^docs/(\\d+)$", new Action() {
+	router.map("^/docs/(\\d+)$", new Action() {
 	    @Override
 	    public void execute(String token) {
-		String id = token.substring(5);
+		String id = token.substring(6);
 		showDocument(id);
 	    }
+	});
+	
+	router.map("^/docs/new", new Action() {
+	    @Override
+	    public void execute(String token) {
+		newDocument();
+	    }
+	});
+    }
+
+    private void newDocument() {
+	// FIXME
+	play.setStatus("Creating new document...");
+	Document doc = new Document(null, "Nuevo documento", "Descripción");
+	manager.create(doc, new AsyncCallback<Document>() {
+	    @Override
+	    public void onSuccess(Document result) {
+		showDocument(result);
+		showDocuments(true);
+	    }
+
+	    @Override
+	    public void onFailure(Throwable caught) {
+		play.setStatus(caught.getLocalizedMessage());
+	    }
+
 	});
     }
 
     private void showDocument(String id) {
+	showDocuments(false);
 	play.setStatus("Showing document: " + id);
-	manager.getDocument(id, new AsyncCallback<Document>() {
-	    
+	manager.get(id, new AsyncCallback<Document>() {
+
 	    @Override
 	    public void onSuccess(Document doc) {
-		play.setStatus("Showing document" + doc.title);
-		editor.setDocument(doc);
-		play.setEditor(editor);
-	    }
-	    
-	    @Override
-	    public void onFailure(Throwable caught) {
-		
-	    }
-	});
-    }
-
-    private void showArchives() {
-
-	play.setStatus("Retrieving document list...");
-	manager.getList(new AsyncCallback<List<DocumentInfo>>() {
-	    @Override
-	    public void onSuccess(List<DocumentInfo> result) {
-		play.setStatus("Document list retrieved.");
-		explorer.setList(result);
-		play.setExplorer(explorer);
+		showDocument(doc);
+		showDocuments(false);
 	    }
 
 	    @Override
 	    public void onFailure(Throwable caught) {
+		play.setStatus(caught.getLocalizedMessage());
 	    }
 	});
     }
 
+    private void showDocuments(boolean refresh) {
+	if (refresh || play.getExplorer() != explorer) {
+	    play.setStatus("Retrieving document list...");
+	    manager.list(new AsyncCallback<List<DocumentInfo>>() {
+		@Override
+		public void onSuccess(List<DocumentInfo> result) {
+		    play.setStatus("Document list retrieved.");
+		    explorer.setList(result);
+		    play.setExplorer(explorer);
+		}
+
+		@Override
+		public void onFailure(Throwable caught) {
+		    play.setStatus(caught.getLocalizedMessage());
+		}
+	    });
+	}
+    }
+
+    private void showDocument(Document doc) {
+	play.setStatus("Showing document" + doc.title);
+	editor.setDocument(doc);
+	play.setEditor(editor);
+    }
 
 }

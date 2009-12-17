@@ -18,7 +18,7 @@ public class Playground extends Composite {
     @UiField
     Label status;
     @UiField
-    LayoutPanel explorer;
+    LayoutPanel explorer, content, tools;
 
     public Playground() {
 	initWidget(uiBinder.createAndBindUi(this));
@@ -35,7 +35,16 @@ public class Playground extends Composite {
     }
 
     public void setEditor(Widget editor) {
-	
+	content.clear();
+	content.add(editor);
+    }
+    
+    public Widget getEditor() {
+	return content.getWidgetCount() > 0 ? content.getWidget(0) : null;
+    }
+
+    public Widget getExplorer() {
+	return explorer.getWidgetCount() > 0 ? explorer.getWidget(0) : null;
     }
 
 }

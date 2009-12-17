@@ -1,0 +1,22 @@
+.editor {
+	width: 80%;
+	margin: 5px auto;
+	overflow: hidden;
+	background-color: #efefef;
+	color: #C6C8CA;
+	font-family: sans;
+	font-size: 80%;
+	padding: 5px;
+	border-top: 2px solid #D4E8EF;
+		border-bottom: 2px solid #D4E8EF;
+}
+
+.area {
+	width: 100%;
+	padding: 2px;
+	height: 6em;
+	color: black;
+	background-color: white;
+	border: 1px solid #C6C8CA;
+}
+
