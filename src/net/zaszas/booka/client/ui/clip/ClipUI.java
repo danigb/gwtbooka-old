@@ -1,64 +1,107 @@
 package net.zaszas.booka.client.ui.clip;
 
 import net.zaszas.booka.client.models.Clip;
-import net.zaszas.booka.client.ui.clip.EditorPanel.EditorPanelListener;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ClipUI extends Composite implements EditorPanelListener {
+public class ClipUI extends Composite {
 
     private static ClipUIUiBinder uiBinder = GWT.create(ClipUIUiBinder.class);
-    private final Clip clip;
+
+    interface Styles extends CssResource {
+	String active();
+    }
 
     public static interface ClipUIListener {
-	
+
+	void editorCancelled(Clip clip, ClipUI clipUI);
+
+	void editorSaved(Clip clip, ClipUI clipUI);
     }
-    
+
     @UiField
-    FlowPanel editorPanel;
-    
+    FlowPanel editorPanel, contentControls;
     @UiField
-    HTML contentPanel;
-    private final ClipUIListener listener;
+    HTML contentBody;
+    @UiField
+    FocusPanel contentPanel;
+    @UiField
+    Styles style;
+
+    private final ClipUILogic logic;
 
     interface ClipUIUiBinder extends UiBinder<Widget, ClipUI> {
     }
 
     public ClipUI(Clip clip, ClipUIListener listener) {
-	this.clip = clip;
-	this.listener = listener;
 	initWidget(uiBinder.createAndBindUi(this));
-	editorPanel.setVisible(false);
+	logic = new ClipUILogic(clip, this, listener);
     }
 
     public void setEditor(String type) {
-	contentPanel.setVisible(false);
-	ClipEditor editor = ClipEditorFactory.getInstance().create(type);
-	editor.getDataFrom(clip);
-	editorPanel.clear();
-	editorPanel.add(new EditorPanel(editor, this));
-	editorPanel.setVisible(true);
+	logic.setEditor(type);
     }
 
-    @Override
-    public void onCancelEditor(ClipEditor editor) {
+    void setClipEditor(EditorPanel editor) {
 	editorPanel.clear();
 	editorPanel.setVisible(false);
-	contentPanel.setVisible(true);
+	if (editor != null) {
+	    editorPanel.add(editor);
+	    editorPanel.setVisible(true);
+	}
     }
 
-    @Override
-    public void onSaveEditor(ClipEditor editor) {
-	contentPanel.setHTML(editor.getResultAsHTML());
-	editor.setDataTo(clip);
-	editorPanel.clear();
-	contentPanel.setVisible(true);
+    public void setContent(String html) {
+	contentBody.setHTML(html);
+	setContentVisible(true);
+    }
+
+    void setContentVisible(boolean visible) {
+	contentBody.setVisible(visible);
+    }
+
+    @UiHandler("contentPanel")
+    public void onContentPanelOver(MouseOverEvent e) {
+	logic.onOverContent();
+    }
+
+    @UiHandler("contentPanel")
+    public void onContentPanelOut(MouseOutEvent e) {
+	logic.onOutContent();
+    }
+    
+    @UiHandler("contentPanel")
+    public void onContentClick(ClickEvent e) {
+	logic.onContentClicked();
+    }
+    
+    @UiHandler("edit") 
+    public void onContentEdit(ClickEvent e) {
+	logic.onEditContent();
+    }
+
+    public void setContentControlsVisible(boolean visible) {
+	contentControls.setVisible(visible);
+    }
+
+    public void setActive(boolean active) {
+	if (active) {
+	    contentPanel.getElement().addClassName(style.active());
+	} else {
+	    contentPanel.getElement().removeClassName(style.active());
+	}
     }
 
 }

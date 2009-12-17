@@ -1,0 +1,18 @@
+
+.clipUI {
+	margin-bottom: 3px;
+}
+
+.contentPanel {
+	margin: 3px 0 0 0;
+	padding: 3px 1em;
+	cursor: pointer;
+}
+
+.active {
+	background-color: #D4E8EF;
+}
+
+.controls {
+	font-size: 70%;	
+}

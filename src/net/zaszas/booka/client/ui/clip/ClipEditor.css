@@ -1,5 +1,4 @@
 .editor {
-	width: 80%;
 	margin: 5px auto;
 	overflow: hidden;
 	background-color: #efefef;
@@ -8,7 +7,7 @@
 	font-size: 80%;
 	padding: 5px;
 	border-top: 2px solid #D4E8EF;
-		border-bottom: 2px solid #D4E8EF;
+	border-bottom: 2px solid #D4E8EF;
 }
 
 .area {
@@ -19,4 +18,3 @@
 	background-color: white;
 	border: 1px solid #C6C8CA;
 }
-

@@ -1,11 +1,24 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>
-		
-	</ui:style>
-	<g:FlowPanel>
-		<g:FlowPanel ui:field="editorPanel" />
-		<g:HTML ui:field="contentPanel" />
+	<ui:style field="ui" src="../Booka.css" />
+	<ui:style type="net.zaszas.booka.client.ui.clip.ClipUI.Styles"
+		src="ClipUI.css" />
+			
+		<g:FlowPanel styleName="clipUI {style.clipUI}">
+		<g:FocusPanel ui:field="contentPanel" styleName="content {style.contentPanel}">
+			<g:HTML ui:field="contentBody" styleName="body" />
+		</g:FocusPanel>
+
+		<g:FlowPanel ui:field="contentControls"
+			styleName="actions {style.controls} {ui.actions}">
+			<g:Label ui:field="edit" styleName="{ui.action}">editar</g:Label>
+			<g:Label ui:field="delete" styleName="{ui.action}">borrar</g:Label>
+			<g:Label ui:field="moveup" styleName="{ui.action}">up</g:Label>
+			<g:Label ui:field="movedown" styleName="{ui.action}">down</g:Label>
+		</g:FlowPanel>
+
+		<g:FlowPanel ui:field="editorPanel" styleName="editor">
+		</g:FlowPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 

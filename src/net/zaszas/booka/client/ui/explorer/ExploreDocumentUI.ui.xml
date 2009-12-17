@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style field="ui" src="../Booka.css" />
+	<ui:style src="ExploreDocumentUI.css" />
+		
+	<g:HTMLPanel styleName="{style.docInfo}">
+		<g:Label styleName="{style.title}" ui:field="title">Title</g:Label>
+		<span ui:field="description" class="{style.description}">Description</span>
+		<span ui:field="extra" class="{style.extra}">Extra information</span>
+	</g:HTMLPanel>
+</ui:UiBinder> 

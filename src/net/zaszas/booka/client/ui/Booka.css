@@ -1,0 +1,17 @@
+.actions {
+	width: 100%;
+	overflow: hidden;
+	background-color: #efefef;
+	padding: 5px 0;
+}
+
+.action {
+	cursor: pointer;
+	float: left;
+	padding: 0.2em 1em;
+	margin: 1px 0 0 3px;
+	color: white;
+	background-color: #C6C8CA; /* #00AEEF; */
+	color: white;
+	font-family: sans;
+}

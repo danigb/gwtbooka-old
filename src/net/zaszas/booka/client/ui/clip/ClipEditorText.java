@@ -10,7 +10,8 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ClipEditorText extends Composite implements ClipEditor {
-
+    private static final String MIME_TYPE = "text";
+    
     private static ClipEditorTextUiBinder uiBinder = GWT.create(ClipEditorTextUiBinder.class);
 
     interface ClipEditorTextUiBinder extends UiBinder<Widget, ClipEditorText> {
@@ -36,6 +37,7 @@ public class ClipEditorText extends Composite implements ClipEditor {
     @Override
     public void setDataTo(Clip clip) {
 	clip.body = area.getText();
+	clip.type = ClipEditorText.MIME_TYPE;
     }
 
 }

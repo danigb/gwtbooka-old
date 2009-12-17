@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style field="ui" src="../Booka.css" />
+	<ui:style src="ExplorerUI.css" />
+		
+	<g:DockLayoutPanel styleName=".explorerUI {style.explorerUI}" unit="PX">
+		<g:north size="30">
+			<g:HTMLPanel stylePrimaryName="actions" styleName="{ui.actions}">
+				<g:Hyperlink ui:field="addProjectAction"
+				targetHistoryToken="/docs/new" 
+				styleName="{style.action}">Añadir artículo</g:Hyperlink>
+				<g:Hyperlink ui:field="addDocumentAction"
+				targetHistoryToken="/docs/new" 
+				styleName="{style.action}">Añadir documento</g:Hyperlink>
+			</g:HTMLPanel>
+		</g:north>
+		<g:center>
+			<g:FlowPanel styleName=".list {style.list}" ui:field="list"></g:FlowPanel>
+		</g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 

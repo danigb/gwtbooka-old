@@ -1,0 +1,60 @@
+.icon {
+	display: block;
+	float: left;
+	width: 64px;
+	height: 64px;
+	margin: 7px 0 0 10px;
+	cursor: pointer;
+}
+
+.navigation {
+	width: 100%;
+	overflow: hidden;
+	background-color: white;
+}
+
+.content {
+	background-color: #C6C8CA;
+}
+
+.status {
+	display: block;
+	width: 100%;
+	padding: 1px 10px;
+	font-size: 90%;
+	background-color: black;
+	color: #C6C8CA;
+}
+
+.right {
+	float: right;
+	margin: 7px 10px 0 0;
+}
+
+@sprite .entrance {
+	gwt-image: 'entranceImage';
+}
+
+@sprite .archives {
+	gwt-image: 'archivesImage';
+}
+
+@sprite .edition {
+	gwt-image: 'editionImage';
+}
+
+@sprite .booka {
+	gwt-image: 'bookaImage';
+}
+
+@sprite .account {
+	gwt-image: 'accountImage';
+}
+
+@sprite .contact {
+	gwt-image: 'contactImage';
+}
+
+@sprite .calendar {
+	gwt-image: 'calendarImage';
+}

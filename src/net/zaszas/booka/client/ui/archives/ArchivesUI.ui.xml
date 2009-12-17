@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style field="ui" src="../Booka.css" />
+		
+	<ui:style src="ArchivesUI.css" />
+		
+	<g:DockLayoutPanel ui:field="self" styleName="archivesUI {style.archivesUI}" unit="PX">
+		<g:west size="300">
+			<g:SimplePanel  ui:field="explorer" styleName="{style.explorer}" />
+		</g:west>
+
+		<g:east size="250">
+			<g:SimplePanel ui:field="tools" styleName="{style.tools}" />
+		</g:east>
+
+		<g:center>
+			<g:SimplePanel ui:field="content" styleName="{style.content}" />
+		</g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 

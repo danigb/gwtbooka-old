@@ -1,18 +1,18 @@
 package net.zaszas.booka.client.managers;
 
-import java.util.List;
-
 import net.zaszas.booka.client.models.Document;
-import net.zaszas.booka.client.models.DocumentInfo;
+import net.zaszas.booka.client.models.DocumentList;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.calclab.suco.client.events.Listener;
+
+
 
 public interface DocumentManager {
+    void getList();
 
-    void list(AsyncCallback<List<DocumentInfo>> callback);
+    void onListRetrieved(Listener<DocumentList> listener);
 
-    void get(String id, AsyncCallback<Document> callback);
-
-    void create(Document doc, AsyncCallback<Document> callback);
-
+    void getDocument(String id);
+    
+    void onDocumentRetrieved(Listener<Document> listener);
 }
